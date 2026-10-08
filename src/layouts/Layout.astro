@@ -32,22 +32,34 @@ const { title, description = 'Senior full-stack web developer on Oʻahu.' } = As
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <div style="position:relative;overflow:clip;background:#0B0A1E;min-height:100dvh">
+  <div class="relative overflow-clip bg-space min-h-dvh">
     <!-- Film grain overlay -->
-    <div aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;mix-blend-mode:screen;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+    <div aria-hidden="true" class="film-grain"></div>
 
     <SpaceBackground />
     <Spine />
     <!-- Streaks overlay (populated by JS during transitions) -->
-    <div id="streaks-overlay" aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden"></div>
+    <div id="streaks-overlay" aria-hidden="true" class="fixed inset-0 pointer-events-none z-[2] overflow-hidden"></div>
     <Header client:load />
-    <main id="main-content" transition:name="main-content" style="position:relative;z-index:1">
+    <main id="main-content" transition:name="main-content" class="relative z-[1]">
       <slot />
     </main>
     <Footer />
   </div>
 </body>
 </html>
+
+<style>
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .05;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+</style>
 
 <script>
 const STREAK_COLORS = ['#EB3323', '#F3C623', '#19A6A3', '#F1E3CB', '#8A2E57', '#FFFFFF'];

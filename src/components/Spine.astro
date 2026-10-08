@@ -5,12 +5,12 @@
 <div
   aria-hidden="true"
   data-spine=""
-  style="position:fixed;left:max(6px,calc(clamp(20px,5vw,64px) - 1px));top:57px;bottom:0;width:36px;pointer-events:none;z-index:11"
+  class="spine"
 >
   <svg
     viewBox="0 0 36 1000"
     preserveAspectRatio="none"
-    style="width:100%;height:100%"
+    class="w-full h-full"
     fill="none"
     stroke-width="3.6"
     stroke-linecap="butt"
@@ -21,3 +21,15 @@
     <line data-spine-line="3" x1="25.4" y1="0" x2="25.4" y2="1000" stroke="#541B36" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
   </svg>
 </div>
+
+<style>
+.spine {
+  position: fixed;
+  left: max(6px, calc(clamp(20px, 5vw, 64px) - 1px));
+  top: 57px;
+  bottom: 0;
+  width: 36px;
+  pointer-events: none;
+  z-index: 11;
+}
+</style>

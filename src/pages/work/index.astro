@@ -4,33 +4,32 @@ import { projects } from '../../data/projects';
 ---
 
 <Layout title="Work · Andy Sipple">
-  <section style="position:relative;z-index:1;background:rgba(11,10,30,.75)">
-    <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;gap:clamp(40px,6vw,80px)">
+  <section class="relative z-1 bg-space/75">
+    <div class="section-inner grid gap-[clamp(40px,6vw,80px)]">
 
-      <div style="display:grid;gap:18px">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF">Work · Mission log</div>
-        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(52px,8vw,128px);line-height:.88;text-transform:uppercase">Every<br>mission.</h1>
-        <p style="margin:0;font-size:17px;line-height:1.6;max-width:60ch;color:#F1E3CB">Museums, airports, research institutes and media networks. Most of this was agency work on a team; my role on each is noted.</p>
+      <div class="grid gap-4.5">
+        <div class="font-mono text-[13px] tracking-[.2em] uppercase text-teal-text">Work · Mission log</div>
+        <h1 class="m-0 font-heading font-black uppercase leading-[.88]" style="font-size:clamp(52px,8vw,128px)">Every<br>mission.</h1>
+        <p class="m-0 text-[17px] leading-[1.6] max-w-[60ch] text-cream">Museums, airports, research institutes and media networks. Most of this was agency work on a team; my role on each is noted.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:clamp(24px,3vw,40px)">
+      <div class="grid gap-[clamp(24px,3vw,40px)]" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))">
         {projects.map(p => (
-          <a href={`/work/${p.slug}`} data-reveal="" style="display:grid;gap:18px;text-decoration:none;color:#F1E3CB;position:relative"
-            onmouseover="this.style.color='#F3C623'"
-            onmouseout="this.style.color='#F1E3CB'">
-            <span style="position:relative;display:block">
-              <span style={`position:absolute;inset:0;transform:translate(12px,12px);border:1px solid ${p.accent};box-shadow:0 0 16px ${p.accent}`}></span>
-              <span class="img-placeholder" style="position:relative;display:flex;align-items:flex-end;aspect-ratio:4/3;padding:14px">
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#F1E3CB;background:#0B0A1E;padding:4px 8px;border:1px solid rgba(241,227,203,.3)">{p.imgLabel}</span>
+          <a href={`/work/${p.slug}`} data-reveal=""
+            class="grid gap-4.5 no-underline text-cream relative hover:text-yellow">
+            <span class="relative block">
+              <span class="img-offset-frame" style={`--accent:${p.accent};transform:translate(12px,12px)`}></span>
+              <span class="img-placeholder relative flex items-end aspect-4/3 p-3.5">
+                <span class="font-mono text-[11px] tracking-[.14em] uppercase text-cream bg-space px-2 py-1 border border-cream/30">{p.imgLabel}</span>
               </span>
             </span>
-            <span style="display:grid;gap:8px;padding-top:6px">
-              <span style="display:flex;justify-content:space-between;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF">
+            <span class="grid gap-2 pt-1.5">
+              <span class="flex justify-between gap-4 font-mono text-[12px] tracking-[.18em] uppercase text-teal-text">
                 <span>{p.num} · {p.year}</span>
                 <span style={`color:${p.accent}`}>{p.role}</span>
               </span>
-              <span style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(32px,3.4vw,44px);line-height:.95;text-transform:uppercase">{p.name}</span>
-              <span style="font-size:15px;line-height:1.55;color:#F1E3CB">{p.stack}</span>
+              <span class="font-heading font-extrabold uppercase leading-[.95]" style="font-size:clamp(32px,3.4vw,44px)">{p.name}</span>
+              <span class="text-[15px] leading-[1.55] text-cream">{p.stack}</span>
             </span>
           </a>
         ))}

@@ -13,29 +13,25 @@ const nextPost = notes[(ni + 1) % notes.length];
 ---
 
 <Layout title={`${post.title} · Andy Sipple`}>
-  <section style="position:relative;z-index:1;background:rgba(11,10,30,.75)">
-    <div style="max-width:900px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;gap:40px">
+  <section class="relative z-1 bg-space/75">
+    <div class="section-inner--narrow grid gap-10">
 
-      <a href="/notes" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;text-decoration:none;justify-self:start"
-        onmouseover="this.style.color='#F3C623'"
-        onmouseout="this.style.color='#5FD3CF'"
-      >← Field Notes</a>
+      <a href="/notes" class="link-teal justify-self-start">← Field Notes</a>
 
-      <div style="display:grid;gap:20px">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF">{post.date} · {post.tag} · {post.read}</div>
-        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(44px,7vw,104px);line-height:.88;text-transform:uppercase">{post.title}</h1>
+      <div class="grid gap-5">
+        <div class="font-mono text-[12px] tracking-[.18em] uppercase text-teal-text">{post.date} · {post.tag} · {post.read}</div>
+        <h1 class="m-0 font-heading font-black uppercase leading-[.88]" style="font-size:clamp(44px,7vw,104px)">{post.title}</h1>
       </div>
 
-      <div style="display:grid;gap:22px;font-size:18px;line-height:1.7;color:#F1E3CB">
-        {post.body.map(para => <p style="margin:0">{para}</p>)}
+      <div class="grid gap-5.5 text-[18px] leading-[1.7] text-cream">
+        {post.body.map(para => <p class="m-0">{para}</p>)}
       </div>
 
-      <div style="border-top:1px solid rgba(241,227,203,.18);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase">
-        <span style="color:#E2D3B6">Filed from Oʻahu</span>
-        <a href={`/notes/${nextPost.slug}`} style="color:#F3C623;text-decoration:none"
-          onmouseover="this.style.color='#F1E3CB'"
-          onmouseout="this.style.color='#F3C623'"
-        >Next · {nextPost.title} →</a>
+      <div class="border-t border-cream/18 pt-7 flex flex-wrap justify-between gap-4 font-mono text-[12px] tracking-[.14em] uppercase">
+        <span class="text-buff">Filed from Oʻahu</span>
+        <a href={`/notes/${nextPost.slug}`} class="text-yellow no-underline hover:text-cream">
+          Next · {nextPost.title} →
+        </a>
       </div>
 
     </div>

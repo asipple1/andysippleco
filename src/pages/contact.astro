@@ -4,19 +4,20 @@ import ContactForm from '../components/ContactForm';
 ---
 
 <Layout title="Contact · Andy Sipple">
-  <section id="contact" style="position:relative;z-index:1;background:rgba(11,10,30,.75)">
+  <section id="contact" class="relative z-1 bg-space/75">
 
     <!-- Neon accent rules -->
-    <div aria-hidden="true" style="position:absolute;right:0;top:120px;width:40%;height:4px;background:#F3C623;box-shadow:0 0 14px #F3C623"></div>
-    <div aria-hidden="true" style="position:absolute;right:0;top:134px;width:28%;height:2px;background:#19A6A3;box-shadow:0 0 10px #19A6A3"></div>
+    <div aria-hidden="true" class="contact-rule-yellow"></div>
+    <div aria-hidden="true" class="contact-rule-teal"></div>
 
-    <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+    <div class="section-inner relative grid gap-[clamp(40px,6vw,96px)] items-start"
+      style="grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))">
 
-      <div data-reveal="" style="display:grid;gap:28px">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#F3C623">Contact</div>
-        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(56px,9vw,144px);line-height:.88;text-transform:uppercase">Have a project<br>in orbit?</h1>
-        <p style="margin:0;font-size:clamp(17px,1.3vw,20px);line-height:1.55;max-width:42ch">Tell me what you're working on. If I can help, I'll let you know how I'd approach it.</p>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;line-height:2;color:#F1E3CB">
+      <div data-reveal="" class="grid gap-7">
+        <div class="font-mono text-[12px] tracking-[.2em] uppercase text-yellow">Contact</div>
+        <h1 class="m-0 font-heading font-black uppercase leading-[.88]" style="font-size:clamp(56px,9vw,144px)">Have a project<br>in orbit?</h1>
+        <p class="m-0 leading-[1.55] max-w-[42ch]" style="font-size:clamp(17px,1.3vw,20px)">Tell me what you're working on. If I can help, I'll let you know how I'd approach it.</p>
+        <div class="font-mono text-[11px] tracking-[.16em] uppercase leading-loose text-cream">
           Response window · 1–2 business days<br>
           hello@andysipple.com
         </div>
@@ -28,3 +29,24 @@ import ContactForm from '../components/ContactForm';
     </div>
   </section>
 </Layout>
+
+<style>
+.contact-rule-yellow {
+  position: absolute;
+  right: 0;
+  top: 120px;
+  width: 40%;
+  height: 4px;
+  background: #F3C623;
+  box-shadow: 0 0 14px #F3C623;
+}
+.contact-rule-teal {
+  position: absolute;
+  right: 0;
+  top: 134px;
+  width: 28%;
+  height: 2px;
+  background: #19A6A3;
+  box-shadow: 0 0 10px #19A6A3;
+}
+</style>
