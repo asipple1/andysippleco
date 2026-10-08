@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Lost in space · Andy Sipple">
+  <section style="position:relative;z-index:1;background:rgba(11,10,30,.75);min-height:70vh;display:grid;align-items:center">
+    <div style="max-width:1280px;width:100%;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(40px,6vw,96px);align-items:center">
+
+      <div style="display:grid;gap:24px">
+        <div style="display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#EB3323">
+          <span style="width:8px;height:8px;border-radius:50%;background:#EB3323;box-shadow:0 0 10px #EB3323;display:inline-block;animation:blink 1.2s steps(1) infinite"></span>
+          <span>Error 404 · Signal lost</span>
+        </div>
+        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(60px,10vw,160px);line-height:.86;text-transform:uppercase">Lost in<br>space.</h1>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:50ch;color:#F1E3CB">The page you're looking for may have moved, or the coordinates were never charted.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <a href="/" style="text-decoration:none;background:#19A6A3;color:#0B0A1E;padding:14px 26px;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 0 26px rgba(25,166,163,.5);transition:transform .15s"
+            onmouseover="this.style.transform='translateY(-3px)'"
+            onmouseout="this.style.transform=''"
+          >Return to base</a>
+          <a href="/work" style="text-decoration:none;color:#F1E3CB;padding:14px 26px;border:1px solid rgba(241,227,203,.4);font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase"
+            onmouseover="this.style.color='#F3C623';this.style.borderColor='#F3C623'"
+            onmouseout="this.style.color='#F1E3CB';this.style.borderColor='rgba(241,227,203,.4)'"
+          >See the work</a>
+        </div>
+      </div>
+
+      <!-- 404 probe SVG -->
+      <div aria-hidden="true" style="position:relative;max-width:420px;width:100%;justify-self:center">
+        <svg viewBox="0 0 400 400" style="width:100%;height:auto;overflow:visible" fill="none">
+          <circle cx="200" cy="200" r="150" stroke="rgba(241,227,203,.18)" stroke-dasharray="4 10"/>
+          <circle cx="200" cy="200" r="100" stroke="rgba(241,227,203,.18)" stroke-dasharray="4 10"/>
+          <circle cx="200" cy="200" r="36" fill="#E2D3B6"/>
+          <circle cx="190" cy="192" r="9" fill="#9A8A6A" opacity=".7"/>
+          <circle cx="212" cy="210" r="6" fill="#9A8A6A" opacity=".7"/>
+          <circle cx="208" cy="186" r="4" fill="#9A8A6A" opacity=".6"/>
+          <!-- Orbiting probe -->
+          <g>
+            <polygon points="0,-12 10,0 0,12 -10,0" fill="#F3C623"/>
+            <line x1="0" y1="12" x2="0" y2="30" stroke="#F1E3CB" stroke-width="2"/>
+            <circle cx="0" cy="0" r="3" fill="#0B0A1E"/>
+            <animateMotion dur="14s" repeatCount="indefinite"
+              path="M 350 200 A 150 150 0 1 1 50 200 A 150 150 0 1 1 350 200"/>
+          </g>
+          <!-- Pulsing ring -->
+          <circle cx="200" cy="200" r="36" fill="none" stroke="#EB3323" stroke-width="1.5" style="animation:blink 2.4s ease-in-out infinite"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+</Layout>

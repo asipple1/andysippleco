@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects';
+---
+
+<Layout title="Work · Andy Sipple">
+  <section style="position:relative;z-index:1;background:rgba(11,10,30,.75)">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;gap:clamp(40px,6vw,80px)">
+
+      <div style="display:grid;gap:18px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF">Work · Mission log</div>
+        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(52px,8vw,128px);line-height:.88;text-transform:uppercase">Every<br>mission.</h1>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:60ch;color:#F1E3CB">Museums, airports, research institutes and media networks. Most of this was agency work on a team; my role on each is noted.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:clamp(24px,3vw,40px)">
+        {projects.map(p => (
+          <a href={`/work/${p.slug}`} data-reveal="" style="display:grid;gap:18px;text-decoration:none;color:#F1E3CB;position:relative"
+            onmouseover="this.style.color='#F3C623'"
+            onmouseout="this.style.color='#F1E3CB'">
+            <span style="position:relative;display:block">
+              <span style={`position:absolute;inset:0;transform:translate(12px,12px);border:1px solid ${p.accent};box-shadow:0 0 16px ${p.accent}`}></span>
+              <span class="img-placeholder" style="position:relative;display:flex;align-items:flex-end;aspect-ratio:4/3;padding:14px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#F1E3CB;background:#0B0A1E;padding:4px 8px;border:1px solid rgba(241,227,203,.3)">{p.imgLabel}</span>
+              </span>
+            </span>
+            <span style="display:grid;gap:8px;padding-top:6px">
+              <span style="display:flex;justify-content:space-between;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF">
+                <span>{p.num} · {p.year}</span>
+                <span style={`color:${p.accent}`}>{p.role}</span>
+              </span>
+              <span style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(32px,3.4vw,44px);line-height:.95;text-transform:uppercase">{p.name}</span>
+              <span style="font-size:15px;line-height:1.55;color:#F1E3CB">{p.stack}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

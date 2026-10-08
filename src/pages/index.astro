@@ -1,11 +1,257 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects';
+import { services, skills } from '../data/services';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const featuredProjects = projects.slice(0, 3);
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Andy Sipple | Web Developer in Hawaiʻi">
+
+  <!-- HERO -->
+  <section
+    id="top"
+    data-hero-scrim=""
+    style="position:relative;z-index:1;min-height:min(96vh,980px);background:linear-gradient(90deg,rgba(11,10,30,.85) 0%,rgba(11,10,30,.6) 45%,rgba(11,10,30,0) 70%);display:flex;align-items:center"
+  >
+    <div data-hero-copy="" style="position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,96px) clamp(20px,5vw,64px) clamp(120px,16vw,200px);display:grid;gap:36px">
+      <div data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF;display:flex;gap:16px;align-items:center">
+        <span style="width:28px;height:2px;background:#19A6A3;box-shadow:0 0 10px #19A6A3"></span>
+        <span>Senior Full-Stack Web Developer · Now Boarding</span>
+      </div>
+
+      <h1 data-reveal="" data-hero-h1="" style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(60px,9.5vw,168px);line-height:.88;text-transform:uppercase;color:#F1E3CB;max-width:min(12ch,62vw)">
+        Building better<br>things <span style="color:#F3C623;text-shadow:0 0 30px rgba(243,198,35,.55)">for the web.</span>
+      </h1>
+
+      <p data-reveal="" style="margin:0;max-width:min(52ch,58%);font-size:clamp(17px,1.4vw,21px);line-height:1.55;color:#F1E3CB">
+        I'm Andy, a senior web developer based on Oʻahu, Hawaiʻi. I build fast, thoughtful websites and digital experiences for organizations big and small.
+      </p>
+
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:16px">
+        <a href="/work" style="text-decoration:none;background:#F1E3CB;color:#0B0A1E;padding:14px 26px;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 0 26px rgba(241,227,203,.35);transition:transform .15s,box-shadow .15s"
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 40px rgba(241,227,203,.6)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 0 26px rgba(241,227,203,.35)'"
+        >View My Work</a>
+        <a href="/contact" style="text-decoration:none;color:#F1E3CB;border:1px solid #19A6A3;box-shadow:0 0 16px rgba(25,166,163,.45),inset 0 0 16px rgba(25,166,163,.15);padding:14px 26px;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase;transition:background .15s,box-shadow .15s"
+          onmouseover="this.style.background='rgba(25,166,163,.18)';this.style.boxShadow='0 0 30px rgba(25,166,163,.8)'"
+          onmouseout="this.style.background='';this.style.boxShadow='0 0 16px rgba(25,166,163,.45),inset 0 0 16px rgba(25,166,163,.15)'"
+        >Start a Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED MISSIONS -->
+  <section id="work" style="position:relative;z-index:1;border-top:1px solid rgba(241,227,203,.18);background:rgba(11,10,30,.7)">
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px)">
+
+      <div data-reveal="" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,6vw,80px)">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF;margin-bottom:18px">01 / Work</div>
+          <h2 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(52px,8vw,128px);line-height:.88;text-transform:uppercase">Selected<br>Missions</h2>
+        </div>
+        <p style="margin:0;max-width:38ch;font-size:16px;line-height:1.55;color:#F1E3CB">A few projects I'm proud of. Most were built with teams at agencies; independent work is marked.</p>
+      </div>
+
+      <div style="display:grid;gap:clamp(48px,6vw,96px)">
+        {featuredProjects.map(p => (
+          <article data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,4vw,56px);align-items:center;border-top:1px solid rgba(241,227,203,.18);padding-top:clamp(24px,3vw,40px)">
+            <a href={`/work/${p.slug}`} style={`position:relative;display:block;text-decoration:none;order:${p.imgOrder};transition:transform .3s`}
+              onmouseover="this.style.transform='translate(-4px,-6px)'"
+              onmouseout="this.style.transform=''">
+              <div style={`position:absolute;inset:0;transform:translate(14px,14px);border:1px solid ${p.accent};box-shadow:0 0 18px ${p.accent}`}></div>
+              <div class="img-placeholder" style="position:relative;aspect-ratio:4/3;display:flex;align-items:flex-end;padding:16px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#F1E3CB;background:#0B0A1E;padding:4px 8px;border:1px solid rgba(241,227,203,.3)">{p.imgLabel}</span>
+              </div>
+            </a>
+            <div style={`display:grid;gap:20px;order:${p.textOrder}`}>
+              <div style="display:flex;gap:10px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF">
+                <span style={`display:inline-block;width:10px;height:10px;border-radius:50%;background:${p.accent};box-shadow:0 0 10px ${p.accent}`}></span>
+                {p.num} · {p.kind}
+              </div>
+              <h3 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(40px,4.5vw,68px);line-height:.92;text-transform:uppercase">{p.name}</h3>
+              <div style="font-size:14px;font-weight:600;color:#F3C623">{p.client}</div>
+              <p style="margin:0;font-size:16px;line-height:1.6;max-width:48ch;color:#F1E3CB">{p.desc}</p>
+              <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,max-content));gap:12px 32px;justify-content:start;font-size:14px">
+                <div><dt style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;margin-bottom:4px">Role</dt><dd style="margin:0;font-weight:500">{p.role}</dd></div>
+                <div><dt style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;margin-bottom:4px">Stack</dt><dd style="margin:0;font-weight:500">{p.stack}</dd></div>
+                <div><dt style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;margin-bottom:4px">Year</dt><dd style="margin:0;font-weight:500">{p.year}</dd></div>
+              </dl>
+              <a href={`/work/${p.slug}`} style="justify-self:start;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:#F1E3CB;text-decoration:none;border-bottom:2px solid #EB3323;box-shadow:0 6px 14px -8px #EB3323;padding-bottom:2px"
+                onmouseover="this.style.color='#F3C623'"
+                onmouseout="this.style.color='#F1E3CB'"
+              >Read the mission log →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div style="margin-top:clamp(40px,5vw,72px);padding-top:32px;border-top:1px solid rgba(241,227,203,.18)">
+        <a href="/work" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;text-decoration:none"
+          onmouseover="this.style.color='#F3C623'"
+          onmouseout="this.style.color='#5FD3CF'"
+        >All missions →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="position:relative;z-index:1;background:rgba(11,10,30,.82);backdrop-filter:blur(6px);border-top:1px solid rgba(241,227,203,.18)">
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;gap:clamp(40px,5vw,72px)">
+
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:32px;align-items:end">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#F3C623;margin-bottom:18px">02 / Services</div>
+          <h2 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(52px,8vw,128px);line-height:.88;text-transform:uppercase">Need something<br>built?</h2>
+        </div>
+        <p style="margin:0;font-size:clamp(17px,1.3vw,20px);line-height:1.55;max-width:46ch">I help businesses turn complicated web problems into fast, maintainable websites that are easy to use and easy to manage.</p>
+      </div>
+
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:rgba(25,166,163,.6);border:1px solid #19A6A3;box-shadow:0 0 30px rgba(25,166,163,.25)">
+        {services.map(s => (
+          <div style="background:#15122F;padding:32px 28px;display:grid;gap:16px;align-content:start;transition:background .2s"
+            onmouseover="this.style.background='#1B1540'"
+            onmouseout="this.style.background='#15122F'">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:#5FD3CF">{s.num}</div>
+            <h3 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:34px;line-height:.95;text-transform:uppercase;color:#F1E3CB">{s.title}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#F1E3CB">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#F3C623">
+        Based on Oʻahu and available for projects throughout Hawaiʻi and beyond.
+      </div>
+    </div>
+  </section>
+
+  <!-- HAWAIʻI -->
+  <section style="position:relative;z-index:1;border-top:1px solid rgba(241,227,203,.18)">
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,5vw,80px);align-items:center">
+
+      <div data-reveal="" style="display:grid;gap:28px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF">03 / Oʻahu · Hawaiʻi</div>
+        <h2 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(52px,8vw,128px);line-height:.88;text-transform:uppercase">Building on<br>the islands.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:52ch;color:#F1E3CB">I'm based on Oʻahu and work with Hawaiʻi businesses that want a thoughtful, high-performing web presence without handing their project off to an anonymous offshore team.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:52ch;color:#F1E3CB">Whether you're starting something new or have a website that's overdue for an overhaul, I can help figure out what actually needs to be built.</p>
+        <a href="/contact" style="justify-self:start;text-decoration:none;background:#19A6A3;color:#0B0A1E;padding:14px 26px;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 0 26px rgba(25,166,163,.5);transition:transform .15s,box-shadow .15s"
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 40px rgba(25,166,163,.85)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 0 26px rgba(25,166,163,.5)'"
+        >Tell Me About Your Project</a>
+      </div>
+
+      <!-- Earth SVG -->
+      <div aria-hidden="true" data-reveal="" style="position:relative;aspect-ratio:1;max-width:560px;width:100%;justify-self:center">
+        <svg viewBox="0 0 520 520" style="width:100%;height:100%;overflow:visible">
+          <defs>
+            <linearGradient id="earthTerm" x1="0" y1="0" x2="1" y2="0">
+              <stop offset=".55" stop-color="#0B0A1E" stop-opacity="0"/>
+              <stop offset="1" stop-color="#0B0A1E" stop-opacity=".75"/>
+            </linearGradient>
+            <clipPath id="earthClip"><circle cx="260" cy="260" r="230"/></clipPath>
+          </defs>
+          <circle cx="260" cy="260" r="260" fill="#19A6A3" opacity=".18" style="filter:blur(22px)"/>
+          <circle cx="260" cy="260" r="230" fill="#19A6A3"/>
+          <g clip-path="url(#earthClip)">
+            <g fill="none" stroke="#0B0A1E" stroke-width="1.4" opacity=".3">
+              <ellipse cx="260" cy="260" rx="156" ry="230"/>
+              <ellipse cx="260" cy="260" rx="78" ry="230"/>
+              <line x1="260" y1="30" x2="260" y2="490"/>
+              <line x1="30" y1="260" x2="490" y2="260"/>
+              <path d="M46 150 Q260 100 474 150"/>
+              <path d="M46 370 Q260 420 474 370"/>
+            </g>
+            <g fill="#5CB85C">
+              <path d="M300 70 Q360 50 410 90 Q440 130 420 170 Q380 200 345 180 Q320 160 325 130 Q300 110 300 70 Z"/>
+              <path d="M400 262 Q440 250 462 285 Q470 325 445 355 Q420 385 395 365 Q372 330 380 295 Q388 272 400 262 Z"/>
+              <path d="M60 110 Q110 80 150 110 Q165 150 140 175 Q105 190 85 165 Q60 140 60 110 Z"/>
+            </g>
+            <g fill="#5CB85C">
+              <circle cx="266" cy="217" r="2.4"/>
+              <circle cx="276" cy="222" r="2"/>
+              <circle cx="286" cy="228" r="3.2"/>
+              <circle cx="296" cy="236" r="4.6"/>
+            </g>
+          </g>
+          <circle cx="260" cy="260" r="230" fill="url(#earthTerm)"/>
+          <circle cx="260" cy="260" r="230" fill="none" stroke="#F1E3CB" stroke-width="2" opacity=".55"/>
+          <circle cx="296" cy="236" r="7" fill="#EB3323" style="filter:drop-shadow(0 0 10px #EB3323)"/>
+          <circle cx="296" cy="236" r="20" fill="none" stroke="#EB3323" stroke-width="1.5" style="animation:blink 2.4s ease-in-out infinite"/>
+          <rect x="308" y="214" width="124" height="36" fill="#0B0A1E" opacity=".85"/>
+          <text x="314" y="228" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#F1E3CB">OʻAHU</text>
+          <text x="314" y="244" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#F3C623">21.4° N · 157.9° W</text>
+          <text x="20" y="510" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#19A6A3">PACIFIC OCEAN · HST (UTC−10)</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT (teaser) -->
+  <section id="about" style="position:relative;z-index:1;border-top:1px solid rgba(241,227,203,.18);background:rgba(11,10,30,.82);backdrop-filter:blur(6px)">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(40px,6vw,96px);align-items:center">
+
+      <div data-reveal="" style="position:relative;max-width:440px;width:100%;justify-self:center">
+        <svg aria-hidden="true" viewBox="0 0 440 560" style="position:absolute;inset:-10%;width:120%;height:120%;overflow:visible;pointer-events:none">
+          <ellipse cx="220" cy="280" rx="320" ry="90" fill="none" stroke="#EB3323" stroke-width="1.5" transform="rotate(-20 220 280)" style="filter:drop-shadow(0 0 8px #EB3323)"/>
+        </svg>
+        <div style="position:absolute;inset:0;transform:translate(16px,16px);border:1px solid #F3C623;box-shadow:0 0 18px rgba(243,198,35,.5)"></div>
+        <div class="img-placeholder" style="position:relative;aspect-ratio:4/5;display:flex;align-items:flex-end;padding:16px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#F1E3CB;background:#0B0A1E;padding:4px 8px;border:1px solid rgba(241,227,203,.3)">Portrait · Andy, natural light, unstyled</span>
+        </div>
+        <div aria-hidden="true" style="position:absolute;top:-14px;left:-14px;width:24px;height:24px;border-top:2px solid #EB3323;border-left:2px solid #EB3323"></div>
+        <div aria-hidden="true" style="position:absolute;bottom:2px;right:2px;width:24px;height:24px;border-bottom:2px solid #EB3323;border-right:2px solid #EB3323"></div>
+      </div>
+
+      <div data-reveal="" style="display:grid;gap:24px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF">04 / About</div>
+        <h2 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(44px,5.5vw,88px);line-height:.9;text-transform:uppercase">Complicated problems, uncomplicated solutions.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:54ch;color:#F1E3CB">I'm Andy Sipple, a full-stack developer and longtime technical lead who likes solving complicated problems without making the solution complicated.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:54ch;color:#F1E3CB">I've spent more than a decade building digital experiences for organizations ranging from local businesses to large institutions.</p>
+        <a href="/about" style="justify-self:start;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:#F1E3CB;text-decoration:none;border-bottom:2px solid #F3C623;padding-bottom:2px"
+          onmouseover="this.style.color='#F3C623'"
+          onmouseout="this.style.color='#F1E3CB'"
+        >More about me →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLIGHT LOG -->
+  <section style="position:relative;z-index:1;border-top:1px solid rgba(241,227,203,.18)">
+    <div data-reveal="" style="max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,64px);display:grid;gap:40px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF">05 / Flight Log</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#E2D3B6">Areas of expertise · 10+ years</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px 48px">
+        {skills.map(g => (
+          <div style="display:grid;gap:14px;align-content:start">
+            <h3 style={`margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:40px;line-height:.9;text-transform:uppercase;padding-bottom:12px;border-bottom:2px solid ${g.accent};box-shadow:0 10px 18px -12px ${g.accent}`}>{g.title}</h3>
+            <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:16px">
+              {g.items.map(item => (
+                <li style="display:flex;gap:12px;align-items:center">
+                  <span style="width:6px;height:6px;background:#F1E3CB;border-radius:50%;flex-shrink:0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="position:relative;z-index:1;border-top:1px solid rgba(241,227,203,.18)">
+    <div data-reveal="" style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:32px">
+      <div style="display:grid;gap:18px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#F3C623">06 / Contact</div>
+        <h2 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(52px,8vw,128px);line-height:.88;text-transform:uppercase">Have a project<br>in orbit?</h2>
+      </div>
+      <a href="/contact" style="text-decoration:none;background:#EB3323;color:#F1E3CB;padding:14px 26px;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 0 26px rgba(235,51,35,.55);transition:transform .15s,box-shadow .15s"
+        onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 40px rgba(235,51,35,.9)'"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 0 26px rgba(235,51,35,.55)'"
+      >Start a Project</a>
+    </div>
+  </section>
+
 </Layout>

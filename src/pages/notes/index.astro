@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { notes } from '../../data/notes';
+---
+
+<Layout title="Field Notes · Andy Sipple">
+  <section style="position:relative;z-index:1;background:rgba(11,10,30,.75)">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;gap:clamp(40px,6vw,80px)">
+
+      <div style="display:grid;gap:18px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF">Field Notes</div>
+        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(52px,8vw,128px);line-height:.88;text-transform:uppercase">Notes from<br>the field.</h1>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:60ch;color:#F1E3CB">Short write-ups on things I ran into while building: performance, Drupal, Astro, and running a practice from an island.</p>
+      </div>
+
+      <div style="display:grid;gap:0;border-top:1px solid rgba(241,227,203,.18)">
+        {notes.map((n, i) => (
+          <a href={`/notes/${n.slug}`} data-reveal="" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:baseline;padding:28px 0;border-bottom:1px solid rgba(241,227,203,.18);text-decoration:none;color:#F1E3CB"
+            onmouseover="this.style.color='#F3C623'"
+            onmouseout="this.style.color='#F1E3CB'">
+            <span style="display:grid;gap:10px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF">{n.date} · {n.tag}</span>
+              <span style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(32px,4vw,56px);line-height:.95;text-transform:uppercase">{n.title}</span>
+              <span style="font-size:16px;line-height:1.55;color:#F1E3CB;max-width:60ch">{n.excerpt}</span>
+            </span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#F3C623">{n.read}</span>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</Layout>

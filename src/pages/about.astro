@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { timeline } from '../data/timeline';
+---
+
+<Layout title="About · Andy Sipple">
+  <section style="position:relative;z-index:1;background:rgba(11,10,30,.75)">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+
+      <div style="display:grid;gap:28px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF">About</div>
+        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(52px,8vw,128px);line-height:.88;text-transform:uppercase">Crew<br>manifest.</h1>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:60ch;color:#F1E3CB">I'm Andy Sipple, a full-stack developer and longtime technical lead based on Oʻahu. I like solving complicated problems without making the solution complicated.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:60ch;color:#F1E3CB">For more than a decade I've built digital experiences for museums, airports, research institutes and media companies, mostly on Drupal, and more recently on Astro and headless stacks. I care most about the places where development meets design, accessibility and performance.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:60ch;color:#F1E3CB">Today I work directly with Hawaiʻi businesses and with agency teams on the mainland. When I'm not building for the web, I'm somewhere outside.</p>
+        <a href="/contact" style="justify-self:start;text-decoration:none;background:#19A6A3;color:#0B0A1E;padding:14px 26px;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 0 26px rgba(25,166,163,.5);transition:transform .15s,box-shadow .15s"
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 40px rgba(25,166,163,.85)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 0 26px rgba(25,166,163,.5)'"
+        >Work with me</a>
+      </div>
+
+      <!-- Portrait placeholder -->
+      <div data-reveal="" style="position:relative;max-width:440px;width:100%;justify-self:center">
+        <div style="position:absolute;inset:0;transform:translate(16px,16px);border:1px solid #F3C623;box-shadow:0 0 18px rgba(243,198,35,.5)"></div>
+        <div class="img-placeholder" style="position:relative;aspect-ratio:4/5;display:flex;align-items:flex-end;padding:16px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#F1E3CB;background:#0B0A1E;padding:4px 8px;border:1px solid rgba(241,227,203,.3)">Portrait · Andy, natural light, unstyled</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(72px,9vw,128px);display:grid;gap:40px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(241,227,203,.18);padding-top:40px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5FD3CF">Flight log · Timeline</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#E2D3B6">2012 → now</div>
+      </div>
+      <ol style="margin:0;padding:0;list-style:none;display:grid;gap:0">
+        {timeline.map(t => (
+          <li data-reveal="" style="display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px 32px;padding:24px 0;border-bottom:1px solid rgba(241,227,203,.14)">
+            <span style={`font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:${t.accent}`}>{t.years}</span>
+            <span style="display:grid;gap:6px">
+              <span style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:30px;line-height:.95;text-transform:uppercase">{t.title}</span>
+              <span style="font-size:15px;line-height:1.55;color:#F1E3CB;max-width:60ch">{t.desc}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Layout>

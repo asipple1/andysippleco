@@ -1,0 +1,51 @@
+---
+// Footer with logo stems, nav links, coordinates
+---
+
+<footer style="position:relative;z-index:12;background:#06060F;color:#F1E3CB;padding:clamp(40px,5vw,64px) clamp(20px,5vw,64px);border-top:1px solid rgba(241,227,203,.18)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:32px;align-items:end">
+
+    <!-- Brand -->
+    <div data-footer-brand="" style="position:relative;display:grid;gap:6px;padding-left:54px">
+      <!-- Stem marks (decorative lines extending from spine into footer) -->
+      <svg
+        data-footer-mark=""
+        aria-hidden="true"
+        viewBox="0 0 56 56"
+        preserveAspectRatio="xMinYMax meet"
+        style="position:absolute;left:0;bottom:0;width:40px;height:calc(clamp(40px,5vw,64px) + 41px);overflow:hidden"
+        fill="none"
+        stroke-width="5"
+        stroke-linecap="butt"
+      >
+        <path d="M4 -400 L4 36 Q4 50 18 50 L52 50" stroke="#EB3323"/>
+        <path d="M14 -400 L14 30 Q14 40 24 40 L52 40" stroke="#F3C623"/>
+        <path d="M24 -400 L24 24 Q24 30 30 30 L52 30" stroke="#19A6A3"/>
+        <path d="M34 -400 L34 18 Q34 20 36 20 L52 20" stroke="#541B36"/>
+      </svg>
+      <div style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:28px;letter-spacing:.04em;text-transform:uppercase">Andy Sipple</div>
+      <div style="font-size:14px">Senior Web Developer<br>Oʻahu, Hawaiʻi</div>
+    </div>
+
+    <!-- Social links -->
+    <div style="display:flex;gap:24px;font-size:14px;font-weight:500">
+      <a href="https://linkedin.com/in/andysipple" target="_blank" rel="noopener noreferrer"
+        style="color:#F1E3CB;text-decoration:none;border-bottom:1px solid #19A6A3"
+        onmouseover="this.style.color='#F3C623'" onmouseout="this.style.color='#F1E3CB'">LinkedIn</a>
+      <a href="https://github.com/andysipple" target="_blank" rel="noopener noreferrer"
+        style="color:#F1E3CB;text-decoration:none;border-bottom:1px solid #19A6A3"
+        onmouseover="this.style.color='#F3C623'" onmouseout="this.style.color='#F1E3CB'">GitHub</a>
+      <a href="mailto:hello@andysipple.com"
+        style="color:#F1E3CB;text-decoration:none;border-bottom:1px solid #19A6A3"
+        onmouseover="this.style.color='#F3C623'" onmouseout="this.style.color='#F1E3CB'">Email</a>
+    </div>
+
+    <!-- Coordinates -->
+    <div
+      data-footer-right=""
+      style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;justify-self:end;text-align:right"
+    >
+      Transmitting from the Pacific · Est. 2026
+    </div>
+  </div>
+</footer>

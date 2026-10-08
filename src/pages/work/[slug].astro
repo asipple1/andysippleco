@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map(p => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const pi = projects.findIndex(p => p.slug === slug);
+const proj = projects[pi];
+const nextProj = projects[(pi + 1) % projects.length];
+---
+
+<Layout title={`${proj.name} · Andy Sipple`}>
+  <section style="position:relative;z-index:1;background:rgba(11,10,30,.75)">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;gap:clamp(40px,5vw,72px)">
+
+      <a href="/work" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;text-decoration:none;justify-self:start"
+        onmouseover="this.style.color='#F3C623'"
+        onmouseout="this.style.color='#5FD3CF'"
+      >← All missions</a>
+
+      <div style="display:grid;gap:24px">
+        <div style="display:flex;gap:10px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF">
+          <span style={`display:inline-block;width:10px;height:10px;border-radius:50%;background:${proj.accent};box-shadow:0 0 10px ${proj.accent}`}></span>
+          Mission {proj.num} · {proj.kind}
+        </div>
+        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(56px,10vw,160px);line-height:.88;text-transform:uppercase">{proj.name}</h1>
+        <div style="font-size:18px;font-weight:600;color:#F3C623">{proj.client}</div>
+        <p style="margin:0;font-size:clamp(18px,1.5vw,22px);line-height:1.6;max-width:56ch;color:#F1E3CB">{proj.desc}</p>
+        <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,max-content));gap:16px 48px;font-size:15px">
+          <div><dt style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;margin-bottom:6px">Role</dt><dd style="margin:0;font-weight:500">{proj.role}</dd></div>
+          <div><dt style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;margin-bottom:6px">Stack</dt><dd style="margin:0;font-weight:500">{proj.stack}</dd></div>
+          <div><dt style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;margin-bottom:6px">Year</dt><dd style="margin:0;font-weight:500">{proj.year}</dd></div>
+        </dl>
+      </div>
+
+      <!-- Hero image placeholder -->
+      <div data-reveal="" style="position:relative">
+        <div style={`position:absolute;inset:0;transform:translate(16px,16px);border:1px solid ${proj.accent};box-shadow:0 0 22px ${proj.accent}`}></div>
+        <div class="img-placeholder" style="position:relative;aspect-ratio:16/9;display:flex;align-items:flex-end;padding:16px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#F1E3CB;background:#0B0A1E;padding:4px 8px;border:1px solid rgba(241,227,203,.3)">{proj.imgLabel}</span>
+        </div>
+      </div>
+
+      <!-- Challenge / Approach / Outcome -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:rgba(25,166,163,.6);border:1px solid #19A6A3;box-shadow:0 0 30px rgba(25,166,163,.25)">
+        <div data-reveal="" style="background:#15122F;padding:36px 32px;display:grid;gap:16px;align-content:start">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:#5FD3CF">01</div>
+          <h2 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:40px;line-height:.92;text-transform:uppercase">Challenge</h2>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:#F1E3CB">{proj.challenge}</p>
+        </div>
+        <div data-reveal="" style="background:#15122F;padding:36px 32px;display:grid;gap:16px;align-content:start">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:#5FD3CF">02</div>
+          <h2 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:40px;line-height:.92;text-transform:uppercase">Approach</h2>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:#F1E3CB">{proj.approach}</p>
+        </div>
+        <div data-reveal="" style="background:#15122F;padding:36px 32px;display:grid;gap:16px;align-content:start">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:#5FD3CF">03</div>
+          <h2 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:40px;line-height:.92;text-transform:uppercase">Outcome</h2>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:#F1E3CB">{proj.outcome}</p>
+        </div>
+      </div>
+
+      <!-- Next mission -->
+      <a href={`/work/${nextProj.slug}`} style="display:grid;gap:10px;text-decoration:none;color:#F1E3CB;border-top:1px solid rgba(241,227,203,.18);padding-top:32px;justify-items:end;text-align:right"
+        onmouseover="this.style.color='#F3C623'"
+        onmouseout="this.style.color='#F1E3CB'"
+      >
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF">Next mission</span>
+        <span style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,6vw,96px);line-height:.9;text-transform:uppercase">{nextProj.name} →</span>
+      </a>
+
+    </div>
+  </section>
+</Layout>

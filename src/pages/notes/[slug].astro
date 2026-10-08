@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { notes } from '../../data/notes';
+
+export function getStaticPaths() {
+  return notes.map(n => ({ params: { slug: n.slug } }));
+}
+
+const { slug } = Astro.params;
+const ni = notes.findIndex(n => n.slug === slug);
+const post = notes[ni];
+const nextPost = notes[(ni + 1) % notes.length];
+---
+
+<Layout title={`${post.title} · Andy Sipple`}>
+  <section style="position:relative;z-index:1;background:rgba(11,10,30,.75)">
+    <div style="max-width:900px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,64px);display:grid;gap:40px">
+
+      <a href="/notes" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF;text-decoration:none;justify-self:start"
+        onmouseover="this.style.color='#F3C623'"
+        onmouseout="this.style.color='#5FD3CF'"
+      >← Field Notes</a>
+
+      <div style="display:grid;gap:20px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5FD3CF">{post.date} · {post.tag} · {post.read}</div>
+        <h1 style="margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(44px,7vw,104px);line-height:.88;text-transform:uppercase">{post.title}</h1>
+      </div>
+
+      <div style="display:grid;gap:22px;font-size:18px;line-height:1.7;color:#F1E3CB">
+        {post.body.map(para => <p style="margin:0">{para}</p>)}
+      </div>
+
+      <div style="border-top:1px solid rgba(241,227,203,.18);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase">
+        <span style="color:#E2D3B6">Filed from Oʻahu</span>
+        <a href={`/notes/${nextPost.slug}`} style="color:#F3C623;text-decoration:none"
+          onmouseover="this.style.color='#F1E3CB'"
+          onmouseout="this.style.color='#F3C623'"
+        >Next · {nextPost.title} →</a>
+      </div>
+
+    </div>
+  </section>
+</Layout>

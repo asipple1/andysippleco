@@ -1,0 +1,23 @@
+---
+// Fixed left spine — four colored lines that draw in on scroll
+---
+
+<div
+  aria-hidden="true"
+  data-spine=""
+  style="position:fixed;left:max(6px,calc(clamp(20px,5vw,64px) - 1px));top:57px;bottom:0;width:36px;pointer-events:none;z-index:11"
+>
+  <svg
+    viewBox="0 0 36 1000"
+    preserveAspectRatio="none"
+    style="width:100%;height:100%"
+    fill="none"
+    stroke-width="3.6"
+    stroke-linecap="butt"
+  >
+    <line data-spine-line="0" x1="4" y1="0" x2="4" y2="1000" stroke="#EB3323" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <line data-spine-line="1" x1="11.1" y1="0" x2="11.1" y2="1000" stroke="#F3C623" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <line data-spine-line="2" x1="18.3" y1="0" x2="18.3" y2="1000" stroke="#19A6A3" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <line data-spine-line="3" x1="25.4" y1="0" x2="25.4" y2="1000" stroke="#541B36" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+  </svg>
+</div>
